@@ -10,4 +10,4 @@
 @elseif($word->id == 10)
 @include('alumnos.form.chat')
 @endif
-@endsection
+@endsection 

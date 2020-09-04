@@ -13,20 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () { 
+Route::get('/', function () {
     return view('welcome');
-
 });
 
 
 Auth::routes();
-
+Route::resource('docente', 'Auth\RegisDocenteController');
 
 Route::get('docente', 'Auth\RegisDocenteController@index')->name('docente');
 
 Route::post('auth/register_doc', 'Auth\RegisDocenteController@create')->name('register_docente');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/nosotros', 'IniController@index')->name('nosotros');
 Route::resource('soporte', 'SoporteController');
 
@@ -45,15 +45,25 @@ Route::resource('pagos', 'PagoController');
 
 Route::resource('avances', 'AvanceController');
 
-Route::resource('subir', 'ArchivoController'); 
-Route::resource('cuentas', 'CuentaController'); 
+Route::resource('subir', 'ArchivoController');
+Route::resource('cuentas', 'CuentaController');
 Route::resource('retiros', 'RetiroController');
-Route::resource('message', 'ChatController');
+
+//Chat rutas
+//Route::get('/', 'MessageController@index');
+Route::post('/messages', 'MessageController@fetch')->middleware('auth');
+Route::put('/messages', 'MessageController@sentMessage')->middleware('auth');
+Route::prefix('chat')->group(function () {
+    Route::post('/new', 'MessageController@newChat')->middleware('auth');
+    Route::get('/all', 'MessageController@chats')->middleware('auth');
+});
+
+
 
 Route::post('/paypal/pay', 'PaymentController@payWithPayPal')->name('paypal/pay');
 Route::get('/paypal/status/{id}', 'PaymentController@payPalStatus');
- 
- Route::post('/payments/pay', 'Payment2Controller@pay')->name('pay');
+
+Route::post('/payments/pay', 'Payment2Controller@pay')->name('pay');
 Route::post('/payments/approval', 'Payment2Controller@approval')->name('approval');
 Route::post('/payments/cancelled', 'PaymentController2@cancelled')->name('cancelled');
 
