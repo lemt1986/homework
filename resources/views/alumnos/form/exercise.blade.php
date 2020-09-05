@@ -15,8 +15,21 @@
             </select>
           </div>
           <div class="form-group col-md-6">
-            <label for="inputPassword4" style="font-weight: bold;color: #4fafb2;">Fecha de entrega</label>
-            <input type="date" class="form-control" id="inputPassword4" name="fecha_entr" required>
+            
+            <label for="inputPassword4" style="font-weight: bold;color: #4fafb2;">Fecha de entrega  </label>
+            <input type="date" class="form-control" id="fecha" name="fecha_entr" required min="">
+            <script>
+              var fecha = new Date();
+    var anio = fecha.getFullYear();
+    var dia = fecha.getDate();
+    var _mes = fecha.getMonth();//viene con valores de 0 al 11
+    _mes = _mes + 1;//ahora lo tienes de 1 al 12
+    if (_mes < 10)//ahora le agregas un 0 para el formato date
+    { var mes = "0" + _mes;}
+    else
+    { var mes = _mes.toString;}
+    document.getElementById("fecha").min = anio+'-'+mes+'-'+dia; 
+            </script>
           </div>
         </div>
         <div class="form-row">
@@ -26,10 +39,8 @@
           </div>
           <div class="form-group col-md-6">
             <label for="inputPassword4" style="font-weight: bold;color: #4fafb2;">Adjuntar archivo</label>
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="customFile" name="archivo" required>
-              <label class="custom-file-label" for="customFile">Choose file</label>
-            </div>
+            
+              <input type="file" class="form-control-file btn btn-info"  name="archivo" required>
           </div>
         </div>
         <div class="form-row">
@@ -38,13 +49,8 @@
             <input type="text" class="form-control" id="inputEmail4" name="materia" required>
           </div>
           <div class="form-group col-md-6">
-            <label for="inputPassword4" style="font-weight: bold;color: #4fafb2;">Forma de pago del proyecto / tarea</label>
-            <select class="custom-select custom-select-lg mb-3" name="f_pagos">
-              
-              <option value="Completo">Completo</option>
-              <option value="2_Cuota">2 Cuota</option>
-              
-            </select>
+            <label for="inputPassword4" style="font-weight: bold;color: #4fafb2;">Descripción del proyecto / tarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descripcion" required></textarea>
           </div>
         </div>
         <div class="form-row">
@@ -53,8 +59,7 @@
             <input type="text" class="form-control" id="inputEmail4" name="nombre_proyecto" required>
           </div>
           <div class="form-group col-md-6">
-            <label for="inputPassword4" style="font-weight: bold;color: #4fafb2;">Descripción del proyecto / tarea</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descripcion" required></textarea>
+            
           </div>
 
         </div>

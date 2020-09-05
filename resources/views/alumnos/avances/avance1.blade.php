@@ -50,8 +50,13 @@
                 <div class="col-md-1 mx-2" style="background-color: #d9e022;border-radius:10px; border-radius:10px; ">
                     <a href="{{route('subir.index', ['id_exer' => $exer->id])}}">Descargar</a>
                 </div>
-                <div class="col-md-1 mx-2" >
-                        <a href="{{route('message.chat', ['teacher' => $exer->teacher])}}"  style="background-color: #d5d5d5;color: #4fafb2;font-weight: bold;border-radius:10px; border-radius:10px;">Chat</a>
+                <div class="col-md-1 mx-2" style="background-color: #d5d5d5;color: #4fafb2;font-weight: bold;border-radius:10px; border-radius:10px;">
+
+                    <form action="{{route('chat.chat')}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="teacher" value="$exer->teacher">
+                         <button type="submit">Chat</button>
+                    </form>
 
 
                 </div>
@@ -97,8 +102,9 @@
 <p></p>
 <!-- chat en tiempo real-->
 
-@if(isset($chat))
-    <message :user_id="{{Auth::user()->id}}"></message>
+    @if(isset($chat))
+
+    @else
 @endif
 
 

@@ -92,7 +92,7 @@ class WordController extends Controller
         return view('alumnos.trabajos', compact('exercise', 'words', 'clase', 'id'));
     }
 
-    public function show(word $word)
+    public function show(word $word) 
     {
         $areas = DB::table('areas')->get();
 

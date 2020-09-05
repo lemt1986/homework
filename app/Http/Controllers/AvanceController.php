@@ -8,7 +8,7 @@ use DB;
 use Auth;
 
 class AvanceController extends Controller
-{
+{ 
     /**
      * Display a listing of the resource.
      *
@@ -27,20 +27,19 @@ class AvanceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function chat(Request $request)
     {
-       /* $exer = DB::table('exercises')->where([['user_id', Auth::user()->id], ['status', 2]])->get();
+        $exer = DB::table('exercises')->where([['user_id', Auth::user()->id], ['status', 2]])->get();
 
          $chat = DB::table('chats')->where([['usuario', $request->teacher], ['de', Auth::user()->id]])->get();
 
          $user = DB::table('users')->select('name', 'id')->where('id', $request->teacher)->get();
 
-
-          return view('alumnos.avances.avance', compact('exer', 'chat', 'user'));*/
-
+            return view('alumnos.avances.avance', compact('exer', 'chat', 'user'));
     }
 
-    /** 
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -65,7 +64,7 @@ class AvanceController extends Controller
      */
     public function show(avance $avance)
     {
-        
+        //
     }
 
     /**
@@ -76,7 +75,7 @@ class AvanceController extends Controller
      */
     public function edit(avance $avance)
     {
-        
+        //
     }
 
     /**
@@ -88,7 +87,7 @@ class AvanceController extends Controller
      */
     public function update(Request $request, avance $avance)
     {
-        
+        //
     }
 
     /**
@@ -99,6 +98,6 @@ class AvanceController extends Controller
      */
     public function destroy(avance $avance)
     {
-        
+        //
     }
 }
